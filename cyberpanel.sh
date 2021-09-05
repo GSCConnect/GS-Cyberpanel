@@ -46,15 +46,15 @@ Sudo_Test=$(set)
 
 Set_Default_Variables() {
 
-echo -e "Fetching latest data from CyberPanel server...\n"
-echo -e "This may take few seconds..."
+echo -e "Fetching latest data from our boys at CyberPanel...\n"
+echo -e "It's gonna take like 15, go grab a coffe :)..."
 
 Silent="Off"
 Server_Edition="OLS"
 Admin_Pass="1234567"
 
-Memcached="Off"
-Redis="Off"
+Memcached="On"
+Redis="On"
 
 Postfix_Switch="On"
 PowerDNS_Switch="On"
@@ -77,8 +77,8 @@ Branch_Name="v${Panel_Version}.${Panel_Build}"
 if [[ $Branch_Name = v*.*.* ]] ; then
   echo -e  "\nBranch name fetched...$Branch_Name"
 else
-  echo -e "\nUnable to fetch Branch name..."
-  echo -e "\nPlease try again in few moments, if this error still happens, please contact support"
+  echo -e "\nUnable to fetch Branch name... Fuck"
+  echo -e "\nYou saty"
   exit
 fi
 
@@ -102,7 +102,7 @@ LSWS_Stable_Version=$(expr "$LSWS_Stable_Line" : '.*LSWS_STABLE=\(.*\) BUILD .*'
 
 Enterprise_Flag=""
 License_Key=""
-Debug_Log2 "Starting installation..,1"
+Debug_Log2 "Starting installation boys, turn on your joints..,1"
 
 }
 
@@ -125,29 +125,29 @@ if [[ "$1" = *.*.* ]]; then
   }
   ')
   if [[ $Output = *">="* ]]; then
-    echo -e "\nYou must use version number higher than 1.9.4"
+    echo -e "\nYou must use version number higher than 1.9.4\n Come on fool"
     exit
   else
     Branch_Name="v${1//[[:space:]]/}"
     echo -e "\nSet branch name to $Branch_Name..."
   fi
 else
-  echo -e "\nPlease input a valid format version number."
+  echo -e "\nStop playing games, you mom dropped you?."
   exit
 fi
 }
 
 License_Check() {
 License_Key="$1"
-echo -e "\nChecking LiteSpeed Enterprise license key..."
+echo -e "\nChecking LiteSpeed Enterprise license key... Better be legit."
 if echo "$License_Key" | grep -q "^....-....-....-....$" && [[ ${#License_Key} = "19" ]]; then
   echo -e "\nLicense key set...\n"
 elif [[ ${License_Key,,} = "trial" ]] ; then
   echo -e "\nTrial license set..."
   License_Key="Trial"
 else
-  echo -e "\nLicense key seems incorrect, please verify"
-  echo -e "\nIf you are copying/pasting, please make sure you didn't paste blank space...\n"
+  echo -e "\nLicense key seems incorrect, please verify or we will contact the authorities."
+  echo -e "\nIf you are copying/pasting, please make sure you didn't paste blank space... Dumbass\n"
   exit
 fi
 }
@@ -160,9 +160,9 @@ if [[ $? != "0" ]]; then
     echo -e "\n\n\n$1"
   fi
   echo -e  "above command failed..."
-  Debug_Log2 "command failed, exiting. For more information read /var/log/installLogs.txt [404]"
+  Debug_Log2 "command failed, exiting. Looser. For more information read /var/log/installLogs.txt [404]"
   if [[ "$2" = "no_exit" ]] ; then
-    echo -e"\nRetrying..."
+    echo -e"\nRetrying... Cross your fingers"
   else
     exit
   fi
@@ -184,39 +184,39 @@ done
 }
 
 Check_Root() {
-echo -e "\nChecking root privileges..."
+echo -e "\nChecking root privileges... Like he a prince or something?"
   if echo "$Sudo_Test" | grep SUDO >/dev/null; then
-    echo -e "\nYou are using SUDO , please run as root user...\n"
+    echo -e "\nYou are using SUDO , please run as root user...'sudo su'\n"
     echo -e "\nIf you don't have direct access to root user, please run \e[31msudo su -\e[39m command (do NOT miss the \e[31m-\e[39m at end or it will fail) and then run installation command again."
     exit
   fi
 
   if [[ $(id -u) != 0 ]] >/dev/null; then
-    echo -e "\nYou must run on root user to install CyberPanel...\n"
+    echo -e "\nYou must run on root user to install CyberPanel...You should know better\n"
     echo -e "or run following command: (do NOT miss the quotes)"
     echo -e "\e[31msudo su -c \"sh <(curl https://cyberpanel.sh || wget -O - https://cyberpanel.sh)\"\e[39m"
     exit 1
   else
-    echo -e "\nYou are runing as root...\n"
+    echo -e "\nWelcome back Mr.root User\n"
   fi
 }
 
 Check_Server_IP() {
 Server_IP=$(curl --silent --max-time 30 -4 https://cyberpanel.sh/?ip)
   if [[ $Server_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo -e "Valid IP detected..."
+    echo -e "Valid IP detected...Sending it to the FBI"
   else
-    echo -e "Can not detect IP, exit..."
+    echo -e "Can not detect IP, exit... You using VPN?"
     Debug_Log2 "Can not detect IP. [404]"
     exit
   fi
 
-echo -e "\nChecking server location...\n"
+echo -e "\nChecking server location... Hope it's not China\n"
 
 if [[ "$Server_Country" != "CN" ]] ; then 
   Server_Country=$(curl --silent --max-time 10 -4 https://cyberpanel.sh/?country)
   if [[ ${#Server_Country} != "2" ]] ; then
-   Server_Country="Unknow"
+   Server_Country="China"
   fi
 fi 
 #to avoid repeated check_ip called by debug_log2 to break force mirror for CN servers.
@@ -239,22 +239,22 @@ fi
 
 Check_OS() {
 if [[ ! -f /etc/os-release ]] ; then
-  echo -e "Unable to detect the operating system...\n"
+  echo -e "Unable to detect the operating system... JK, it's cuz you in China\n"
   exit
 fi
 
 # Reference: https://unix.stackexchange.com/questions/116539/how-to-detect-the-desktop-environment-in-a-bash-script
 if [ -z "$XDG_CURRENT_DESKTOP" ]; then
-    echo -e "Desktop OS not detected. Proceeding\n"
+    echo -e "Desktop OS not detected, da fuck?. Anyways, let's continue.\n"
 else
-    echo "$XDG_CURRENT_DESKTOP defined appears to be a desktop OS. Bailing as CyberPanel is incompatible."
-    echo -e "\nCyberPanel is supported on server OS types only. Such as Ubuntu 18.04 x86_64, Ubuntu 20.04 x86_64, Ubuntu 20.10 x86_64, CentOS 7.x, CentOS 8.x, AlmaLinux 8.x and CloudLinux 7.x...\n"
+    echo "$XDG_CURRENT_DESKTOP Oh hell nah! Server OS only sir."
+    echo -e "\nCyberPanel is supported on server OS, Such as Ubuntu 18.04 x86_64, Ubuntu 20.04 x86_64, Ubuntu 20.10 x86_64, CentOS 7.x, CentOS 8.x, AlmaLinux 8.x and CloudLinux 7.x...\n"
     exit
 fi
 
 
 if ! uname -m | grep -q 64 ; then
-  echo -e "x64 system is required...\n"
+  echo -e "x64 system is required... Kinda lame you still using that.\n"
   exit
 fi
 
@@ -269,7 +269,7 @@ elif grep -q -E "Ubuntu 18.04|Ubuntu 20.04|Ubuntu 20.10" /etc/os-release ; then
 elif grep -q -E "Rocky Linux" /etc/os-release ; then
   Server_OS="RockyLinux"
 else
-  echo -e "Unable to detect your system..."
+  echo -e "Unable to detect your system... Probably won't work on your system."
   echo -e "\nCyberPanel is supported on Ubuntu 18.04 x86_64, Ubuntu 20.04 x86_64, Ubuntu 20.10 x86_64, CentOS 7.x, CentOS 8.x, AlmaLinux 8.x, RockyLinux 8.x, CloudLinux 7.x, CloudLinux 8.x...\n"
   Debug_Log2 "CyberPanel is supported on Ubuntu 18.04 x86_64, Ubuntu 20.04 x86_64, Ubuntu 20.10 x86_64, CentOS 7.x, CentOS 8.x, AlmaLinux 8.x, RockyLinux 8.x, CloudLinux 7.x, CloudLinux 8.x... [404]"
   exit
@@ -293,24 +293,24 @@ fi
 }
 
 Check_Virtualization() {
-echo -e "Checking virtualization type..."
+echo -e "Yo, virtualization Security CheckPoint, ID Please"
 #if hostnamectl | grep -q "Virtualization: lxc"; then
-#  echo -e "\nLXC detected..."
+#  echo -e "\nLXC What's this?"
 #  echo -e "CyberPanel does not support LXC"
-#  echo -e "Exiting..."
+#  echo -e "GTFO..."
 #  Debug_Log2 "CyberPanel does not support LXC.. [404]"
 #  exit
 #fi
 #remove per https://github.com/usmannasir/cyberpanel/issues/589
 
 if hostnamectl | grep -q "Virtualization: openvz"; then
-  echo -e "OpenVZ detected...\n"
+  echo -e "OpenVZ detected... We good fam.\n"
 
   if [[ ! -d /etc/systemd/system/pure-ftpd.service.d ]]; then
     mkdir /etc/systemd/system/pure-ftpd.service.d
     echo "[Service]
 PIDFile=/run/pure-ftpd.pid" >/etc/systemd/system/pure-ftpd.service.d/override.conf
-    echo -e "PureFTPd service file modified for OpenVZ..."
+    echo -e "PureFTPd service file modified for OpenVZ... idk why"
   fi
 
   if [[ ! -d /etc/systemd/system/lshttpd.service.d ]]; then
@@ -336,11 +336,11 @@ fi
 Check_Panel() {
 if [[ -d /usr/local/cpanel ]]; then
   echo -e "\ncPanel detected...\n"
-  Debug_Log2 "cPanel detected...exit... [404]"
+  Debug_Log2 "Delete that shit and then maybe you can install... [404]"
   exit
 elif [[ -d /usr/local/directadmin ]]; then
   echo -e "\nDirectAdmin detected...\n"
-  Debug_Log2 "DirectAdmin detected...exit... [404]"
+  Debug_Log2 "DirectAdmin detected...bye felicia... [404]"
   exit
 elif [[ -d /etc/httpd/conf/plesk.conf.d/ ]] || [[ -d /etc/apache2/plesk.conf.d/ ]]; then
   echo -e "\nPlesk detected...\n"
@@ -354,25 +354,25 @@ if systemctl is-active --quiet httpd; then
     systemctl disable httpd
     systemctl stop httpd
     systemctl mask httpd
-    echo -e "\nhttpd process detected, disabling...\n"
+    echo -e "\nhttpd process detected, killing that mofo...\n"
 fi
 if systemctl is-active --quiet apache2; then
     systemctl disable apache2
     systemctl stop apache2
     systemctl mask apache2
-    echo -e "\napache2 process detected, disabling...\n"
+    echo -e "\napache2 process detected, killing the apache...\n"
 fi
 if systemctl is-active --quiet named; then
     systemctl stop named
     systemctl disable named
     systemctl mask named
-    echo -e "\nnamed process detected, disabling...\n"
+    echo -e "\nnamed process detected, disabling that shit...\n"
 fi
 if systemctl is-active --quiet exim; then
     systemctl stop exim
     systemctl disable exim
     systemctl mask exim
-    echo -e "\nexim process detected, disabling...\n"
+    echo -e "\nexim process detected, disabling that shit...\n"
 fi
 }
 
@@ -380,11 +380,11 @@ Check_Provider() {
 if hash dmidecode >/dev/null 2>&1; then
   if [[ "$(dmidecode -s bios-vendor)" = "Google" ]]; then
     Server_Provider="Google Cloud Platform"
-  elif [[ "$(dmidecode -s bios-vendor)" = "DigitalOcean" ]]; then
+  elif [[ "$(dmidecode -s bios-vendor)" = "DigitalOcean (GAY)" ]]; then
     Server_Provider="Digital Ocean"
-  elif [[ "$(dmidecode -s system-product-name | cut -c 1-7)" = "Alibaba" ]]; then
+  elif [[ "$(dmidecode -s system-product-name | cut -c 1-7)" = "Alibaba (GAY)" ]]; then
     Server_Provider="Alibaba Cloud"
-  elif [[ "$(dmidecode -s system-manufacturer)" = "Microsoft Corporation" ]]; then
+  elif [[ "$(dmidecode -s system-manufacturer)" = "Microsoft Corporation (GAY)" ]]; then
     Server_Provider="Microsoft Azure"
   elif [[ -d /usr/local/qcloud ]]; then
     Server_Provider="Tencent Cloud"
@@ -397,7 +397,7 @@ fi
 
 if [[ -f /sys/devices/virtual/dmi/id/product_uuid ]]; then
   if [[ "$(cut -c 1-3 /sys/devices/virtual/dmi/id/product_uuid)" = 'EC2' ]] && [[ -d /home/ubuntu ]]; then
-    Server_Provider='Amazon Web Service'
+    Server_Provider='Amazon Web Service (Gay)'
   fi
 fi
 
@@ -409,13 +409,13 @@ fi
 Show_Help() {
 echo -e "\nCyberPanel Installer Script Help\n"
 echo -e "\nUsage: sh <(curl cyberpanel.sh) --argument"
-echo -e "\n\e[31m-v\e[39m or \e[31m--version\e[39m : choose to install CyberPanel OpenLiteSpeed or CyberPanel Enterprise, available options are \e[31mols\e[39m , \e[31mTRIAL\e[39m and \e[31mSERIAL_NUMBER\e[39m, default ols"
-echo -e "Please be aware, this serial number must be obtained from LiteSpeed Store."
-echo -e "And if this serial number has been used before, it must be released/migrated in Store first, otherwise it will fail to start."
-echo -e "\n\e[31m-a\e[39m or \e[31m--addons\e[39m : install addons: memcached, redis, PHP extension for memcached and redis"
-echo -e "\n\e[31m-p\e[39m or \e[31m--password\e[39m : set password of new installation, empty for default 1234567, [r] or [random] for randomly generated 16 digital password, any other value besides [d] and [r(andom)] will be accept as password, default use 1234567."
+echo -e "\n\e[31m-v\e[39m or \e[31m--version\e[39m : Yo was gud, select CyberPanel OpenLiteSpeed or CyberPanel Enterprise, available options are \e[31mols\e[39m , \e[31mTRIAL\e[39m and \e[31mSERIAL_NUMBER\e[39m, default ols"
+echo -e "BEFORE YOU DO ANYTHING, make sure you have a license for the Enterprice Version."
+echo -e "And don't cheat, if it's repeated make sure to contat LiteSpeed Tech"
+echo -e "\n\e[31m-a\e[39m or \e[31m--addons\e[39m : Wanna full size your combo?: memcached, redis, PHP extension for memcached and redis"
+echo -e "\n\e[31m-p\e[39m or \e[31m--password\e[39m : Time to shine boy,Password Setup | \n empty for default 420420GS, [r] or [random] for randomly generated 16 digital password, any other value besides [d] and [r(andom)] will be accept as password, default use 1234567."
 echo -e "e.g. \e[31m-p r\e[39m will generate a random password"
-echo -e "     \e[31m-p 123456789\e[39m will set password to 123456789"
+echo -e "     \e[31m-p 123456789\e[39m will set password to 420420GS, good luck with that."
 echo -e "\n\e[31m-m\e[39m or \e[31m--minimal\e[39m : set to minimal mode which will not install PowerDNS, Pure-FTPd and Postfix"
 echo -e "\n\e[31m-m postfix/pureftpd/powerdns\e[39m will do minimal install also with compoenent given"
 echo -e "e.g.  \e[31m-m postfix\e[39m will do minimal install also with Postfix"
@@ -433,13 +433,13 @@ echo -e "\nThis will install LiteSpeed Enterise , replace LICENSE_KEY to actual 
 
 Check_Argument() {
 if  [[ "$#" = "0" ]] || [[ "$#" = "1" && "$1" = "--debug" ]] || [[ "$#" = "1" && "$1" = "--mirror" ]]; then
-  echo -e "\nInitialized...\n"
+  echo -e "\nWanna stop? Too late know sucka...\n"
 else
   if [[ $1 = "help" ]]; then
     Show_Help
     exit
   elif [[ $1 = "default" ]]; then
-    echo -e "\nThis will start default installation...\n"
+    echo -e "\nThis will start noob installation...\n"
     Silent="On"
     Postfix_Switch="On"
     PowerDNS_Switch="On"
@@ -471,17 +471,17 @@ else
       -p | --password)
       shift
       if [[ ${1} = "" ]]; then
-        Admin_Pass="1234567"
+        Admin_Pass="420420GS"
       elif [[ ${1} = "r" ]] || [[ $1 = "random" ]]; then
         Admin_Pass=$(
         head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16
         echo ''
         )
       elif [[ ${1} = "d" ]]; then
-        Admin_Pass="1234567"
+        Admin_Pass="420420GS"
       else
         if [[ ${#1} -lt 8 ]]; then
-          echo -e "\nPassword length less than 8 digital, please choose a more complicated password.\n"
+          echo -e "\nPassword length less than 8 digits, try to make it complicated for hackers please.\n"
           exit
         fi
         Admin_Pass="${1}"
@@ -497,7 +497,7 @@ else
         Postfix_Switch="Off"
         PowerDNS_Switch="Off"
         PureFTPd_Switch="Off"
-        echo -e "\nSet to use minimal installation..."
+        echo -e "\nSet to use noob installation..."
       else
           if [[ "${*^^}" = *"POSTFIX"* ]] ; then
             Postfix_Switch="On"
@@ -516,7 +516,7 @@ else
       -a | --addons)
         Memcached="On"
         Redis="On"
-        echo -e "\nEnable Addons..."
+        echo -e "\nThank you for shooping at GS Connect Drive...."
       ;;
       -h | --help)
         Show_Help
@@ -533,7 +533,7 @@ else
           :
         #this is ugly workaround , leave it for now , to-do for further improvement.
         else
-          echo -e "\nUnknown argument...\n"
+          echo -e "\nThe fuck you mean? English bro...\n"
           Show_Help
           exit
         fi
@@ -548,19 +548,19 @@ if [[ "$Debug" = "On" ]] ; then
   Debug_Log "Arguments" "${@}"
 fi
 
-Debug_Log2 "Initialization completed..,2"
+Debug_Log2 "Uh baby yeah keep going...	,2"
 }
 
 Argument_Mode() {
 if [[ "${Server_Edition^^}" = "OLS" ]] ; then
   Server_Edition="OLS"
-  echo -e "\nSet to OpenLiteSpeed..."
+  echo -e "\nSet to OpenLiteSpeed... Free taste better"
 else
   License_Check "$License_Key"
 fi
 
 if [[ $Admin_Pass = "d" ]]; then
-  Admin_Pass="1234567"
+  Admin_Pass="420420GS"
   echo -e "\nSet to default password..."
   echo -e "\nAdmin password will be set to \e[31m$Admin_Pass\e[39m\n"
 elif [[ $Admin_Pass = "r" ]]; then
@@ -576,11 +576,11 @@ fi
 }
 
 Interactive_Mode() {
-echo -e "		CyberPanel Installer v$Panel_Version.$Panel_Build
+echo -e "	GS Connect | CyberPanel Installer v$Panel_Version.$Panel_Build
 
-1. Install CyberPanel.
+1. Install GS CyberPanel.
 
-2. Exit.
+2. Leave and go to mommy.
 
 "
 read -r -p "  Please enter the number[1-2]: " Input_Number
@@ -593,7 +593,7 @@ case "$Input_Number" in
   exit
   ;;
   *)
-  echo -e "  Please enter the right number [1-2]\n"
+  echo -e "  You kidding me right? \n"
   exit
   ;;
 esac
@@ -601,17 +601,17 @@ esac
 
 
 Interactive_Mode_Set_Parameter() {
-echo -e "		CyberPanel Installer v$Panel_Version.$Panel_Build
+echo -e "	GS COnnect | CyberPanel Installer v$Panel_Version.$Panel_Build
 
 RAM check : $(free -m | awk 'NR==2{printf "%s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }')
 
 Disk check : $(df -h | awk '$NF=="/"{printf "%d/%dGB (%s)\n", $3,$2,$5}') (Minimal \e[31m10GB\e[39m free space)
 
-1. Install CyberPanel with \e[31mOpenLiteSpeed\e[39m.
+1. Install GS CyberPanel with \e[31mOpenLiteSpeed\e[39m.
 
-2. Install Cyberpanel with \e[31mLiteSpeed Enterprise\e[39m.
+2. Install GS Cyberpanel with \e[31mLiteSpeed Enterprise\e[39m.
 
-3. Exit.
+3. Leave, fagoot.
 
 "
 read -r -p "  Please enter the number[1-3]: " Input_Number
@@ -627,17 +627,17 @@ case "$Input_Number" in
   exit
   ;;
   *)
-  echo -e "  Please enter the right number [1-3]\n"
+  echo -e "  Bro a kid can probably do this choose  [1-3]\n"
   exit
   ;;
 esac
 
-echo -e "\nInstall Full service for CyberPanel? This will include PowerDNS, Postfix and Pure-FTPd."
+echo -e "\nWant to go balls deep with CyberPanel? This will include PowerDNS, Postfix and Pure-FTPd."
 echo -e ""
-printf "%s" "Full installation [Y/n]: "
+printf "%s" "Are you taking it ALL? ;) [Y/n]: "
 read -r Tmp_Input
 if [[ $(expr "x$Tmp_Input" : 'x[Yy]') -gt 1 ]] || [[ $Tmp_Input = "" ]]; then
-  echo -e "\nFull installation selected..."
+  echo -e "\nYOU A NAUGHTY BOY/GIRL..."
   Postfix_Switch="On"
   PowerDNS_Switch="On"
   PureFTPd_Switch="On"
@@ -670,12 +670,12 @@ fi
 
   ### Ask if you want to set up this CyberPanel with remote MySQL
 
-echo -e "\nDo you want to setup Remote MySQL? (This will skip installation of local MySQL)"
+echo -e "\nDo you want to setup Remote MySQL? (Like not in your casa, I took spanish in High School)"
 echo -e ""
 printf "%s" "(Default = No) Remote MySQL [y/N]: "
 read -r Tmp_Input
 if [[ $(expr "x$Tmp_Input" : 'x[Yy]') -gt 1 ]]; then
-  echo -e "\nRemote MySQL selected..."
+  echo -e "\nRemote MySQL selected... well lets cofig it"
   Remote_MySQL="On"
 
   echo -e ""
@@ -698,10 +698,11 @@ if [[ $(expr "x$Tmp_Input" : 'x[Yy]') -gt 1 ]]; then
   printf "%s" "Remote MySQL Port:  "
   read -r MySQL_Port
 else
-  echo -e "\nLocal MySQL selected..."
+  echo -e "\nLocal MySQL, welcome to your CASA..."
 fi
 
-echo -e "\nPress \e[31mEnter\e[39m key to continue with latest version or Enter specific version such as: \e[31m1.9.4\e[39m , \e[31m2.0.1\e[39m , \e[31m2.0.2\e[39m ...etc"
+echo -e "Oh baby yu doing so good"
+echo -e "\nPress \e[31mEnter\e[39m key to continue with the most recent version of our boys CyberPanel | If you a freak choose the exact version you wish to install"
 printf "%s" ""
 read -r Tmp_Input
 
@@ -711,46 +712,46 @@ else
   Branch_Check "$Tmp_Input"
 fi
 
-echo -e "\nPlease choose to use default admin password \e[31m1234567\e[39m, randomly generate one \e[31m(recommended)\e[39m or specify the admin password?"
+echo -e "\nSecurity baby... Choose an option to set the administrative password."
 printf "%s" "Choose [d]fault, [r]andom or [s]et password: [d/r/s] "
 read -r Tmp_Input
 
 if [[ $Tmp_Input =~ ^(d|D| ) ]] || [[ -z $Tmp_Input ]]; then
-  Admin_Pass="1234567"
+  Admin_Pass="420420GS"
   echo -e "\nAdmin password will be set to $Admin_Pass\n"
 elif [[ $Tmp_Input =~ ^(r|R) ]]; then
   Admin_Pass=$(
     head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16
     echo ''
     )
-  echo -e "\nAdmin password will be provided once installation is completed...\n"
+  echo -e "\nDon't Panic, It's Organic | An Admin password will be provided once installation is completed...\n"
 elif [[ $Tmp_Input =~ ^(s|S) ]]; then
   Custom_Pass="True"
-  echo -e "\nPlease enter your password:"
+  echo -e "\nPlease enter your password, make sure it's safe:"
   printf "%s" ""
   read -r -s -p "Password: " Tmp_Input
   if [[ -z "$Tmp_Input" ]]; then
-    echo -e "\nPlease do not use empty string...\n"
+    echo -e "\nAre you kidding me? Enter something...\n"
     exit
   fi
   if [[ ${#Tmp_Input} -lt 8 ]]; then
-    echo -e "\nPassword length less than 8 digital, please choose a more complicated password.\n"
+    echo -e "\nwe care about your security in GS Connect. Please choose a stronger password with at least 8 digits.\n"
     exit
   fi
   Tmp_Input1=$Tmp_Input
-  read -r -s -p "Confirm Password:" Tmp_Input
+  read -r -s -p "Confirm Your Password:" Tmp_Input
   if [[ -z "$Tmp_Input" ]]; then
-    echo -e "\nPlease do not use empty string...\n"
+    echo -e "\nwe care about your security in GS Connect. Please choose a stronger password with at least 8 digits.\n"
     exit
   fi
   if [[ "$Tmp_Input" = "$Tmp_Input1" ]]; then
     Admin_Pass=$Tmp_Input
   else
-    echo -e "\nRepeated password didn't match , please check...\n"
+    echo -e "\nWhat you smoking? The typed password does not match, try again fool...\n"
     exit
   fi
 else
-  Admin_Pass="1234567"
+  Admin_Pass="420420GS"
   echo -e "\nAdmin password will be set to $Admin_Pass\n"
 fi
 
@@ -774,14 +775,14 @@ else
   echo -e "\nInstall Redis process and its PHP extension set to Yes...\n"
 fi
 
-echo -e "\nWould you like to set up a WatchDog \e[31m(beta)\e[39m for Web service and Database service ?"
-echo -e "The watchdog script will be automatically started up after installation and server reboot"
-echo -e "If you want to kill the watchdog , run \e[31mwatchdog kill\e[39m"
+echo -e "\nWould you like to set up a WatchDog \e[31m(beta)\e[39m for Web service and Database service ? It has a cool name."
+echo -e "The watchdog script will be automatically started up after installation and server reboot. after that you are cool."
+echo -e "If you want to kill the watchdog , run \e[31mwatchdog kill\e[39m | So if you are a Monster..."
 echo -e "Please type Yes or no (with capital \e[31mY\e[39m, default Yes): "
 read -r Tmp_Input
 if [[ $Tmp_Input = "Yes" ]] || [[ $Tmp_Input = "" ]]; then
   Watchdog="On"
-  echo -e "\nInstall Watchdog set to Yes...\n"
+  echo -e "\nPETA would be proud...\n"
 else
   Watchdog="Off"
 fi
@@ -792,16 +793,17 @@ Server_Edition="Enterprise"
 echo -e "\nPlease note that your server has \e[31m$Total_RAM MB\e[39m RAM"
 echo -e "If you are using \e[31mFree Start\e[39m license, It will not start due to \e[31m2GB RAM limit\e[39m.\n"
 echo -e "If you do not have any license, you can also use trial license (if server has not used trial license before), type \e[31mTRIAL\e[39m\n"
+echo -e "We recommed doing what ever the fuck you want :)"
 
-printf "%s" "Please input your serial number for LiteSpeed WebServer Enterprise: "
+printf "%s" "Uh you fancy! Enter your serial number for LiteSpeed WebServer Enterprise: "
 read -r License_Key
 if [[ -z "$License_Key" ]]; then
-  echo -e "\nPlease provide license key\n"
+  echo -e "\nPlease provide license key boy\n"
   exit
 fi
 
 echo -e "The serial number you input is: \e[31m$License_Key\e[39m\n"
-printf "%s" "Please verify it is correct. [y/N]: "
+printf "%s" "Please verify it is correct, don't make me repeat this again. [y/N]: "
 read -r Tmp_Input
 if [[ -z "$Tmp_Input" ]]; then
   echo -e "\nPlease type \e[31my\e[39m\n"
@@ -958,7 +960,7 @@ for i in {1..50} ;
   if grep -q "Django==" /usr/local/requirments.txt ; then
     break
   else
-    echo -e "\n Requirement list has failed to download for $i times..."
+    echo -e "\n Requirement list has failed to download for $i times... ARE YOU CONNECTED TO THE wIFI MAN?"
     echo -e "Wait for 30 seconds and try again...\n"
     sleep 30
   fi
@@ -968,7 +970,7 @@ done
 
 Pre_Install_Required_Components() {
 
-Debug_Log2 "Installing necessary components..,3"
+Debug_Log2 "Installing all the tools and magical shit..,3"
 
 if [[ "$Server_OS" = "CentOS" ]] ; then
   yum update -y
@@ -993,7 +995,7 @@ else
   DEBIAN_FRONTEND=noninteracitve apt install -y dnsutils net-tools htop telnet libcurl4-gnutls-dev libgnutls28-dev libgcrypt20-dev libattr1 libattr1-dev liblzma-dev libgpgme-dev libmariadbclient-dev libcurl4-gnutls-dev libssl-dev nghttp2 libnghttp2-dev idn2 libidn2-dev libidn2-0-dev librtmp-dev libpsl-dev nettle-dev libgnutls28-dev libldap2-dev libgssapi-krb5-2 libk5crypto3 libkrb5-dev libcomerr2 libldap2-dev virtualenv git socat vim unzip zip
     Check_Return
 
-  DEBIAN_FRONTEND=noninteractive apt install -y python3-pip
+  DEBIAN_FRONTEND=noninteractive apt install -y python3-pip fortune cowsay lolcat iptraf-ng ncdu
     Check_Return
 
   ln -s /usr/bin/pip3 /usr/bin/pip3.6
@@ -1009,7 +1011,7 @@ else
   update-locale LC_ALL="en_US.UTF-8"
 fi
 
-Debug_Log2 "Installing required virtual environment,3"
+Debug_Log2 "Installing more shit, keep waiting,3"
 
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -1030,15 +1032,15 @@ else
   . /usr/local/CyberPanel/bin/activate
 fi
 
-Debug_Log2 "Installing requirments..,3"
+Debug_Log2 "Installing THE MUST HAVE TOOLS..,3"
 
 Retry_Command "pip install --default-timeout=3600 -r /usr/local/requirments.txt"
   Check_Return "requirments" "no_exit"
 
 rm -rf cyberpanel
-echo -e "\nFetching files from ${Git_Clone_URL}...\n"
+echo -e "\nDownloading files from ${Git_Clone_URL}...\n"
 
-Debug_Log2 "Getting CyberPanel code..,4"
+Debug_Log2 "Getting GS CyberPanel Port..,4"
 
 Retry_Command "git clone ${Git_Clone_URL}"
   Check_Return "git clone ${Git_Clone_URL}"
@@ -1052,11 +1054,11 @@ cd - || exit
 cp -r cyberpanel /usr/local/cyberpanel
 cd cyberpanel/install || exit
 
-Debug_Log2 "Necessary components installed..,5"
+Debug_Log2 "Lucky bastard, all components installed..,5"
 }
 
 Pre_Install_System_Tweak() {
-Debug_Log2 "Setting up system tweak...,20"
+Debug_Log2 "Setting up GS Connect Framework...,20"
 Line_Number=$(grep -n "127.0.0.1" /etc/hosts | cut -d: -f 1)
 My_Hostname=$(hostname)
 
@@ -1182,7 +1184,8 @@ if ! grep -q "pid_max" /etc/rc.local 2>/dev/null ; then
     echo -e "nameserver 100.100.2.138" >> /etc/resolv.conf
   else
     echo -e "nameserver 1.1.1.1" > /etc/resolv.conf
-    echo -e "nameserver 8.8.8.8" >> /etc/resolv.conf
+    echo -e "nameserver 103.86.96.100" >> /etc/resolv.conf
+    echo -e "nameserver 103.86.99.100" >> /etc/resolv.conf
   fi
 
   systemctl restart systemd-networkd >/dev/null 2>&1
@@ -1191,13 +1194,13 @@ if ! grep -q "pid_max" /etc/rc.local 2>/dev/null ; then
 
 cp /etc/resolv.conf /etc/resolv.conf-tmp
 
-Line1="$(grep -n "f.write('nameserver 8.8.8.8')" installCyberPanel.py | head -n 1 | cut -d: -f1)"
+Line1="$(grep -n "f.write('nameserver 103.86.96.100')" installCyberPanel.py | head -n 1 | cut -d: -f1)"
 sed -i "${Line1}i\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.call\(command, shell=True)" installCyberPanel.py
 sed -i "${Line1}i\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ command = 'cat /etc/resolv.conf-tmp > /etc/resolv.conf'" installCyberPanel.py
 }
 
 License_Validation() {
-Debug_Log2 "Validating LiteSpeed license...,40"
+Debug_Log2 "Validating LiteSpeed license, making sure you ain't cheating...,40"
 Current_Dir=$(pwd)
 
 if [ -f /root/cyberpanel-tmp ]; then
@@ -1228,12 +1231,12 @@ else
 fi
 
 if ./lshttpd -V |& grep "ERROR" || ./lshttpd -V |& grep "expire in 0 days" ; then
-  echo -e "\n\nThere appears to be an issue with license , please check above result..."
+  echo -e "\n\nThere appears to be an issue with license , please check above result... Reading helps a lot. "
   Debug_Log2 "There appears to be an issue with LiteSpeed License, make sure you are using correct serial key. [404]"
   exit
 fi
 
-echo -e "\nLicense seems valid..."
+echo -e "\nLicense seems legit, ight fam..."
 cd "$Current_Dir" || exit
 rm -rf /root/cyberpanel-tmp
   #clean up the temp files
@@ -1294,17 +1297,17 @@ Retry_Command "/root/.acme.sh/acme.sh --upgrade --auto-upgrade"
 }
 
 Main_Installation() {
-Debug_Log2 "Starting main installation..,30"
+Debug_Log2 "Starting main GS Connect CyberPanel Installation..,30"
 if [[ -d /usr/local/CyberCP ]] ; then
-  echo -e "\n CyberPanel already installed, exiting..."
-  Debug_Log2 "CyberPanel already installed, exiting... [404]"
+  echo -e "\n GS CyberPanel already installed, exiting..."
+  Debug_Log2 "GS CyberPanel already installed, exiting... [404]"
   exit
 fi
 
 if [[ $Server_Edition = "Enterprise" ]] ; then
   echo -e "\nValidating the license..."
   echo -e "\nThis may take a minute..."
-  echo -e "\nPlease be patient...\n"
+  echo -e "\nPlease be patient...Roll a joint or something...\n"
 
   License_Validation
 
@@ -1323,7 +1326,7 @@ if [[ $Server_Country = "CN" ]] ; then
   Pre_Install_CN_Replacement
 fi
 
-echo -e "Preparing...\n"
+echo -e "I am about to cu...\n"
 
 Final_Flags=()
 Final_Flags+=("$Server_IP")
@@ -1355,12 +1358,12 @@ fi
 /usr/local/CyberPanel/bin/python install.py "${Final_Flags[@]}"
 
 
-if grep "CyberPanel installation successfully completed" /var/log/installLogs.txt >/dev/null; then
-  echo -e "\nCyberPanel installation sucessfully completed...\n"
-  Debug_Log2 "Main installation completed...,70"
+if grep "GS Connect CyberPanel installation successfully completed, you a fucking Pro Fam." /var/log/installLogs.txt >/dev/null; then
+  echo -e "\nGS Connect CyberPanel installation sucessfully completed...\n"
+  Debug_Log2 "Main installation completed, let's party...,70"
 else
-  echo -e "Oops, something went wrong..."
-  Debug_Log2 "Oops, something went wrong... [404]"
+  echo -e "Fuck!, something went wrong..."
+  Debug_Log2 "Fuck!, something went wrong... [404]"
   exit
 fi
 }
@@ -1422,11 +1425,11 @@ if [[ $Server_OS = "Ubuntu" ]]; then
 fi
 
 if pgrep "lsmcd" ; then
-  echo -e "\n\nLiteSpeed Memcached installed and running..."
+  echo -e "\n\nLiteSpeed Memcached installed and running, fuck Trump btw..."
 fi
 
 if pgrep "memcached" ; then
-  echo -e "\n\nMemcached installed and running..."
+  echo -e "\n\nMemcached installed and running, also your mom and my mom..."
 fi
 }
 
@@ -1464,18 +1467,19 @@ else
 fi
 
 if pgrep "redis" ; then
-  echo -e "\n\nRedis installed and running..."
+  echo -e "\n\nRedis installed and running, it's ready, get it?..."
   touch /home/cyberpanel/redis
 fi
 }
 
 Post_Install_PHP_Session_Setup() {
 echo -e "\nSetting up PHP session storage path...\n"
+echo -e "I told you it was going to take a while"
 wget -O /root/php_session_script.sh "${Git_Content_URL}/stable/CPScripts/setup_php_sessions.sh"
 chmod +x /root/php_session_script.sh
 bash /root/php_session_script.sh
 rm -f /root/php_session_script.sh
-Debug_Log2 "Setting up PHP session conf...,90"
+Debug_Log2 "Setting up PHP session GS configuration...,90"
 }
 
 Post_Install_PHP_TimezoneDB() {
@@ -1527,7 +1531,7 @@ for PHP_Version in /usr/local/lsws/lsphp?? ;
   done
 rm -rf /usr/local/lsws/cyberpanel-tmp
 cd "$Current_Dir" || exit
-Debug_Log2 "Installing timezoneDB...,95"
+Debug_Log2 "Wake up mother joker ! Installing timezoneDB...,95"
 }
 
 Post_Install_Regenerate_Webadmin_Console_Passwd() {
@@ -1559,7 +1563,7 @@ if [[ "$Watchdog" = "On" ]]; then
   if [[ $pid = "" ]]; then
     nohup watchdog lsws >/dev/null 2>&1 &
   fi
-  echo -e "Checking MariaDB ..."
+  echo -e "Checking MariaDB, idk about you but MariaDB sounds like 'mole'..."
   #shellcheck disable=SC2009
   pid=$(ps aux | grep "watchdog mariadb" | grep -v grep | awk '{print $2}')
   if [[ $pid = "" ]]; then
@@ -1573,7 +1577,7 @@ nohup watchdog mariadb > /dev/null 2>&1 &" >>/etc/rc.d/rc.local
     echo "nohup watchdog lsws > /dev/null 2>&1 &
 nohup watchdog mariadb > /dev/null 2>&1 &" >>/etc/rc.local
   fi
-  echo -e "\nSetting up WatchDog..."
+  echo -e "\nSetting up Pitbull Watching 2.0..."
 fi
 }
 
@@ -1588,7 +1592,8 @@ Post_Install_Display_Final_Info() {
 RainloopAdminPass=$(grep SetPassword /usr/local/CyberCP/public/rainloop.php| sed -e 's|$oConfig->SetPassword(||g' -e "s|');||g" -e "s|'||g")
 Elapsed_Time="$((Time_Count / 3600)) hrs $(((SECONDS / 60) % 60)) min $((Time_Count % 60)) sec"
 echo "###################################################################"
-echo "                CyberPanel Successfully Installed                  "
+cowsay "		      GS Connect | Digital revolution		         "
+cowsay "                CyberPanel Successfully Installed                  "
 echo "                                                                   "
 echo "                Current Disk usage : $(df -h | awk '$NF=="/"{printf "%d/%dGB (%s)\n", $3,$2,$5}')                        "
 echo "                                                                   "
@@ -1615,13 +1620,14 @@ echo -e "             Run \e[31mcyberpanel help\e[39m to get FAQ info"
 echo -e "             Run \e[31mcyberpanel upgrade\e[39m to upgrade it to latest version."
 echo -e "             Run \e[31mcyberpanel utility\e[39m to access some handy tools ."
 echo "                                                                   "
-echo "              Website : https://www.cyberpanel.net                 "
-echo "              Forums  : https://forums.cyberpanel.net              "
-echo "              Wikipage: https://docs.cyberpanel.net                "
+echo "              Website : https://www.gsconnect.live                 "
+echo "              GS Blog : https://gsc.gsnews.live          	         "
+echo "		    Linode: https://linode.com          		 "
+echo "              Wiki    : https://docs.cyberpanel.net                "
 echo "              Docs    : https://cyberpanel.net/docs/               "
 echo "                                                                   "
-echo -e "            Enjoy your accelerated Internet by                  "
-echo -e "                CyberPanel & $Word 				                     "
+echo -e "     Thank you for choosing GS Connect CyberPanel Install       "
+echo -e "                powered by Linode | LitesSpeed Tech | CyberPanel 				                     "
 echo "###################################################################"
 
 if [[ "$Server_Provider" != "Undefined" ]]; then
@@ -1641,10 +1647,10 @@ if ! timeout 3 telnet mx.zoho.com 25 | grep "Escape" >/dev/null 2>&1; then
   echo -e "Your provider seems \e[31mblocked\033[39m port 25 , E-mail sending may \e[31mnot\033[39m work properly."
 fi
 
-Debug_Log2 "Completed [200]"
+Debug_Log2 "Sucess [200]"
 
 if [[ "$Silent" != "On" ]]; then
-  printf "%s" "Would you like to restart your server now? [y/N]: "
+  printf "%s" "You should restart your server, would you like to do it now? [y/N]: "
   read -r Tmp_Input
 
   if [[ "${Tmp_Input^^}" = *Y* ]] ; then
@@ -1690,7 +1696,7 @@ rm -f /root/cyberpanel/cert_conf
 }
 
 Post_Install_Required_Components() {
-Debug_Log2 "Finalization..,80"
+Debug_Log2 "I like Turtles..,80"
 virtualenv -p /usr/bin/python3 /usr/local/CyberCP
 
 if [[ "$Server_OS" = "Ubuntu" ]] && [[ "$Server_OS_Version" = "20" ]] ; then
@@ -1833,8 +1839,8 @@ systemctl restart lscpd >/dev/null 2>&1
 /usr/local/lsws/bin/lswsctrl stop >/dev/null 2>&1
 systemctl stop lsws >/dev/null 2>&1
 systemctl start lsws >/dev/null 2>&1
-echo -e "\nFinalizing...\n"
-echo -e "Cleaning up...\n"
+echo -e "\Almost done...\n"
+echo -e "Cleaning up, can you pass me some tissue?...\n"
 rm -rf /root/cyberpanel
 rm -f /tmp/cyberpanel_debug.log
 rm -f /tmp/lsws_latest
@@ -1858,7 +1864,7 @@ sed -i 's|https://www.litespeedtech.com/|https://cyberpanel.sh/www.litespeedtech
 sed -i 's|http://license.litespeedtech.com/|https://cyberpanel.sh/license.litespeedtech.com/|g' /usr/local/CyberCP/serverStatus/serverStatusUtil.py
 }
 
-echo -e "\nInitializing...\n"
+echo -e "\I like ponies...\n"
 
 if [[ "$*" = *"--debug"* ]] ; then
   Debug="On"
