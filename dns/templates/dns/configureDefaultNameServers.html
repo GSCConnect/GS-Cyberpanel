@@ -1,6 +1,6 @@
 {% extends "baseTemplate/index.html" %}
 {% load i18n %}
-{% block title %}{% trans "Configure Default Nameserver - CyberPanel" %}{% endblock %}
+{% block title %}{% trans "Nameserver Configuration - GS Connect" %}{% endblock %}
 {% block content %}
 
 {% load static %}
@@ -9,8 +9,8 @@
 
 <div class="container">
 <div id="page-title">
-   <h2>{% trans "Configure Default Nameserver" %} - <a  target="_blank" href="http://go.cyberpanel.net/dns-records" style="height: 23px;line-height: 21px;" class="btn btn-border btn-alt border-red btn-link font-red" title=""><span>{% trans "DNS Docs" %}</span></a></h2>
-   <p>{% trans "You can use this page to setup nameservers using which people on the internet can resolve websites hosted on this server." %}</p>
+   <h2>{% trans "Configure Default Nameserver Bro" %} - <a  target="_blank" href="http://go.cyberpanel.net/dns-records" style="height: 23px;line-height: 21px;" class="btn btn-border btn-alt border-red btn-link font-red" title=""><span>{% trans "DNS Docs" %}</span></a></h2>
+   <p>{% trans "Linode's Default Nameserver are the default | GS Connect" %}</p>
 </div>
 <div ng-controller="configureDefaultNameservers" class="panel">
     <div class="panel-body">
@@ -21,9 +21,9 @@
 
         {% if not status %}
             <div class="col-md-12 text-center" style="margin-bottom: 2%;">
-                <h3>{% trans "PowerDNS is disabled." %}
+                <h3>{% trans "PowerDNS is deactivated boy." %}
                     <a href="{% url 'managePowerDNS' %}"><button class="btn btn-alt btn-hover btn-blue-alt">
-                        <span>{% trans "Enable Now" %}</span>
+                        <span>{% trans "Enable Now Hommie?" %}</span>
                         <i class="glyph-icon icon-arrow-right"></i>
                     </button></a></h3>
             </div>
@@ -38,25 +38,25 @@
                         <input name="firstNS"  type="text" class="form-control" ng-model="firstNS" required>
                     </div>
 
-                    <div class="current-pack">ns1.example.com</div>
+                    <div class="current-pack">ns1.linode.com</div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{% trans "Second Nameserver" %}</label>
+                    <label class="col-sm-3 control-label">{% trans "Second Nameserver giiiirl" %}</label>
                     <div ng-init="secondNS='{{ secondNS }}'" class="col-sm-6">
                         <input name="secondNS"  type="text" class="form-control" ng-model="secondNS" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{% trans "Third Nameserver" %} </label>
+                    <label class="col-sm-3 control-label">{% trans "Tres Nameserver" %} </label>
                     <div ng-init="thirdNS='{{ thirdNS }}'" class="col-sm-6">
                         <input name="thirdNS"  type="text" class="form-control" ng-model="thirdNS" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{% trans "Forth Nameserver" %}</label>
+                    <label class="col-sm-3 control-label">{% trans "Cuatro Nameserver" %}</label>
                     <div ng-init="forthNS='{{ forthNS }}'" class="col-sm-6">
                         <input name="forthNS"  type="text" class="form-control" ng-model="forthNS" required>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-4">
-                         <button type="button" ng-click="saveNSConfigurations()" class="btn btn-primary btn-lg">{% trans "Save" %}</button>
+                         <button type="button" ng-click="saveNSConfigurations()" class="btn btn-primary btn-lg">{% trans "Damn, you sure you wanna save?" %}</button>
 
                     </div>
                 </div>
