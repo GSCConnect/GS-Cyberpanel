@@ -1,6 +1,6 @@
 {% extends "baseTemplate/index.html" %}
 {% load i18n %}
-{% block title %}{% trans "Home - CyberPanel" %}{% endblock %}
+{% block title %}{% trans "GS Home - GS COnnect CyberPanel" %}{% endblock %}
 {% block content %}
 
 
@@ -9,7 +9,7 @@
 
 <div class="container">
 <div id="page-title">
-   <h2>{% trans "Home" %}</h2>
+   <h2>{% trans "GS Home" %}</h2>
    <p>{% trans "Use the tabs to navigate through the control panel." %}</p>
 </div>
 
@@ -19,12 +19,12 @@
     <div class="mx-10 col-lg-9 panel col-md-push-50">
         <div class="panel-body">
             <h3 class="content-box-header">
-            {% trans "Something went wrong..." %}
+            {% trans "Something went wrong... We are sorry about that." %}
             </h3>
 
             <div class="example-box-wrapper mt-5">
                  <div class="alert alert-danger">
-                        <h4 class="alert-title">Error</h4>
+                        <h4 class="alert-title">Error 404</h4>
                         <p>Error: {{ error_message }}</p>
                     </div>
             </div>
