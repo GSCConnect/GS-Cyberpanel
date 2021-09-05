@@ -146,7 +146,7 @@
                             <li>
                                 <b class="pull-right">{$ ramUsage $}%</b>
                                 <div class="progress-title">
-                                    {% trans "Ram Usage" %}
+                                    {% trans "RAM Usage" %}
 
                                 </div>
                                 <div class="progressbar-small progressbar" data-value="{$ ramUsage $}">
@@ -188,16 +188,16 @@
                 <div id="mobile-navigation">
                     <button id="nav-toggle" class="collapsed" data-toggle="collapse" data-target="#page-sidebar">
                         <span></span></button>
-                    <a href="{% url "index" %}" class="logo-content-small" title="{% trans 'CyberPanel' %}"></a>
+                    <a href="{% url "index" %}" class="logo-content-small" title="{% trans 'GS Connect | CyberPanel' %}"></a>
                 </div>
                 <div id="header-logo" class="logo-bg">
-                    <a href="{% url "index" %}" class="logo-content-big" title="{% trans 'CyberPanel' %}">
+                    <a href="{% url "index" %}" class="logo-content-big" title="{% trans 'GS Connect | CyberPanel' %}">
                         Cyber <i>Panel</i>
-                        <span>{% trans "Web Hosting Control Panel" %}</span>
+                        <span>{% trans "GS Web Hosting Control Panel" %}</span>
                     </a>
-                    <a href="{% url "index" %}" class="logo-content-small" title="{% trans 'CyberPanel' %}">
+                    <a href="{% url "index" %}" class="logo-content-small" title="{% trans 'GS Connect | CyberPanel' %}">
                         Cyber <i>Panel</i>
-                        <span>{% trans "Web Hosting Control Panel" %}</span>
+                        <span>{% trans "GS Web Hosting Control Panel" %}</span>
                     </a>
                     <a id="close-sidebar" href="#" title="{% trans 'Close sidebar' %}">
                         <i class="glyph-icon icon-angle-left"></i>
@@ -216,7 +216,7 @@
                             <div class="box-sm">
                                 <div class="login-box clearfix">
                                     <div class="user-img">
-                                        <a href="#" title="{% trans '' %}" class="change-img">Change photo</a>
+                                        <a href="#" title="{% trans '' %}" class="change-img">Change Profile Pic</a>
                                         <img src="{% static 'baseTemplate/assets/image-resources/gravatar.png' %}"
                                              alt="">
                                     </div>
@@ -226,9 +226,9 @@
                                 <i>{$ admin_type $}</i>
                             </span>
                                         <a href="{% url 'modifyUsers' %}"
-                                           title="{% trans 'Edit profile' %}">{% trans "Edit profile" %}</a>
+                                           title="{% trans 'Edit profile' %}">{% trans "Edit GS Profile" %}</a>
                                         <a href="{% url 'viewProfile' %}"
-                                           title="{% trans 'View Profile' %}">{% trans "View Profile" %}</a>
+                                           title="{% trans 'View Profile' %}">{% trans "View GS Profile" %}</a>
                                     </div>
                                 </div>
                                 <div class="divider"></div>
@@ -247,23 +247,23 @@
                 <div ng-controller="loadAvg" id="header-nav-right">
 
                     <a class="hide-on-phone" style="background-color: none;width: 33px" href="#" class="hdr-btn"
-                       title="{% trans 'CPU Load Average' %}" data-placement="bottom">
+                       title="{% trans 'CPU Load' %}" data-placement="bottom">
                         <span class="badge bg-yellow">{$ one $}</span>
                     </a>
 
                     <a class="hide-on-phone" style="background-color: none;width: 33px" href="#" class="hdr-btn"
-                       title="{% trans 'CPU Load Average' %}" data-placement="bottom">
+                       title="{% trans 'CPU Load' %}" data-placement="bottom">
                         <span class="badge bg-yellow">{$ two $}</span>
                     </a>
 
                     <a class="hide-on-phone" style="background-color: none;width: 33px" href="#" class="hdr-btn"
-                       title="{% trans 'CPU Load Average' %}" data-placement="bottom">
+                       title="{% trans 'CPU Load' %}" data-placement="bottom">
                         <span class="badge bg-yellow">{$ three $}</span>
                     </a>
 
                     <div class="dropdown" id="dashnav-btn">
                         <a href="#" data-toggle="dropdown" data-placement="bottom"
-                           class="popover-button-header tooltip-button" title="{% trans 'Dashboard Quick Menu' %}">
+                           class="popover-button-header tooltip-button" title="{% trans 'GS Dashboard' %}">
                             <i class="glyph-icon icon-linecons-cog"></i>
                         </a>
                         <div class="dropdown-menu float-right">
@@ -274,7 +274,7 @@
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-dashboard opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "Websites" %}
+                                        {% trans "GS Websites" %}
                                     </a>
                                     <a href="{% url 'packagesHome' %}"
                                        class="btn vertical-button remove-border btn-danger"
@@ -282,14 +282,14 @@
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-tags opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "Packages" %}
+                                        {% trans "GS Plans" %}
                                     </a>
                                     <a href="{% url 'dnsHome' %}" class="btn vertical-button remove-border btn-purple"
                                        title="{% trans '' %}">
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-fire opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "DNS" %}
+                                        {% trans "Premium DNS" %}
                                     </a>
                                     <a href="{% url 'loadFTPHome' %}"
                                        class="btn vertical-button remove-border btn-azure"
@@ -297,21 +297,21 @@
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-bar-chart-o opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "FTP" %}
+                                        {% trans " GS FTP" %}
                                     </a>
                                     <a href="{% url 'loadTuningHome' %}"
                                        class="btn vertical-button remove-border btn-yellow" title="{% trans '' %}">
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-laptop opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "Tuning" %}
+                                        {% trans "Dev Tools" %}
                                     </a>
                                     <a href="{% url 'serverStatusHome' %}"
                                        class="btn vertical-button remove-border btn-warning" title="{% trans '' %}">
                             <span class="glyph-icon icon-separator-vertical pad0A medium">
                                 <i class="glyph-icon icon-code opacity-80 font-size-20"></i>
                             </span>
-                                        {% trans "Status" %}
+                                        {% trans "Monitoring" %}
                                     </a>
 
                                 </div>
@@ -332,28 +332,28 @@
 
 
                     <ul id="sidebar-menu">
-                        <li class="header"><span>{% trans "Overview" %}</span></li>
+                        <li class="header"><span>{% trans "Welcome!" %}</span></li>
                         <li>
-                            <a href="#" title="{% trans 'Server IP Address' %}">
-                                <i class="glyph-icon tooltip-button icon-laptop" title="{% trans 'Server IP Address' %}"
+                            <a href="#" title="{% trans 'GS COnnect' %}">
+                                <i class="glyph-icon tooltip-button icon-laptop" title="{% trans 'GS Connect' %}"
                                    data-original-title=".icon-laptop"></i>
-                                <span style="color: #db6868;font-weight: bold;" id="serverIPAddress"></span>
+                                <span style="color: #db6868;font-weight: bold;" CyberPanel "></span>
                             </a>
-                            <a href="{% url 'index' %}" title="{% trans 'Dashboard' %}">
+                            <a href="{% url 'index' %}" title="{% trans 'GS Dashboard' %}">
                                 <i class="glyph-icon icon-dashboard"></i>
-                                <span>{% trans "Dashboard" %}</span>
+                                <span>{% trans "GS Dashboard" %}</span>
                             </a>
                             {% if admin or versionManagement %}
                                 <a href="{% url 'versionManagment' %}"
                                    title="{% trans 'Version Management' %}">
                                     <i class="glyph-icon tooltip-button icon-info"
-                                       title="{% trans 'Version Management' %}" data-original-title=".icon-cloud-upload"
+                                       title="{% trans 'Version status' %}" data-original-title=".icon-cloud-upload"
                                        aria-describedby="tooltip896208"></i>
-                                    <span>{% trans "Version Management" %}</span>
+                                    <span>{% trans "Version status" %}</span>
                                 </a>
                                 <a href="https://go.cyberpanel.net/cloud"
-                                   title="{% trans 'Connect' %}">
-                                    <i class="glyph-icon tooltip-button icon-link" title="{% trans 'Connect' %}"
+                                   title="{% trans 'CyberPanel Cloud' %}">
+                                    <i class="glyph-icon tooltip-button icon-link" title="{% trans 'CyberPanel Cloud' %}"
                                        data-original-title=".icon-cloud-upload" aria-describedby="tooltip896208"></i>
                                     <span>{% trans "Connect" %}</span>
                                 </a>
@@ -363,20 +363,20 @@
                         <li class="header"><span>{% trans "Main" %}</span></li>
 
                         <li>
-                            <a href="{% url 'loadUsersHome' %}" title="{% trans 'Users' %}">
-                                <i class="glyph-icon icon-users" title="{% trans 'Users' %}"></i>
+                            <a href="{% url 'loadUsersHome' %}" title="{% trans 'GS Users' %}">
+                                <i class="glyph-icon icon-users" title="{% trans 'GS Users' %}"></i>
                                 <span>{% trans "Users" %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
                                 <ul>
                                     <li><a href="{% url 'viewProfile' %}"
-                                           title="{% trans 'View Profile' %}"><span>{% trans "View Profile" %}</span></a>
+                                           title="{% trans 'GS Profile' %}"><span>{% trans "GS Profile" %}</span></a>
                                     </li>
                                     {% if admin or createNewUser %}
 
                                         <li><a href="{% url 'createUser' %}"
-                                               title="{% trans 'Create New User' %}"><span>{% trans "Create New User" %}</span></a>
+                                               title="{% trans 'Add a New GS User' %}"><span>{% trans "Add a New GS User" %}</span></a>
                                         </li>
 
                                     {% endif %}
@@ -390,7 +390,7 @@
                                     </li>
                                     {% if admin or resellerCenter %}
                                         <li><a href="{% url 'resellerCenter' %}"
-                                               title="{% trans 'Reseller Center' %}"><span>{% trans "Reseller Center" %}</span></a>
+                                               title="{% trans 'GS Reseller Center' %}"><span>{% trans "GS Reseller Center" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin %}
@@ -413,27 +413,27 @@
                         </li>
 
                         <li>
-                            <a href="{% url 'loadWebsitesHome' %}" title="{% trans 'Websites' %}">
-                                <div class="glyph-icon icon-globe" title="{% trans 'Websites' %}"></div>
-                                <span>{% trans "Websites" %}</span>
+                            <a href="{% url 'loadWebsitesHome' %}" title="{% trans 'GS Websites' %}">
+                                <div class="glyph-icon icon-globe" title="{% trans 'GS Websites' %}"></div>
+                                <span>{% trans "GS Websites" %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
                                 <ul>
                                     {% if admin or createWebsite %}
                                         <li><a href="{% url 'createWebsite' %}"
-                                               title="{% trans 'Create Website' %}"><span>{% trans "Create Website" %}</span></a>
+                                               title="{% trans 'Create Website' %}"><span>{% trans "New Website" %}</span></a>
                                         </li>
                                     {% endif %}
                                     <li><a href="{% url 'listWebsites' %}"
-                                           title="{% trans 'List Websites' %}"><span>{% trans "List Websites" %}</span></a>
+                                           title="{% trans 'Active Websites' %}"><span>{% trans "Active Websites" %}</span></a>
                                     </li>
                                     <li><a href="{% url 'listChildDomains' %}"
                                            title="{% trans 'List Child Domains' %}"><span>{% trans "List Child Domains" %}</span></a>
                                     </li>
                                     {% if admin or modifyWebsite %}
                                         <li><a href="{% url 'modifyWebsite' %}"
-                                               title="{% trans 'Modify Website' %}"><span>{% trans "Modify Website" %}</span></a>
+                                               title="{% trans 'Website Configuration' %}"><span>{% trans  "Website Configuration" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or suspendWebsite %}
@@ -451,31 +451,31 @@
                             </div><!-- .sidebar-submenu -->
                         </li>
                         <li>
-                            <a id="packageHome" href="{% url 'packagesHome' %}" title="{% trans 'Packages' %}">
+                            <a id="packageHome" href="{% url 'packagesHome' %}" title="{% trans 'GS Plans' %}">
                                 <i class="glyph-icon icon-cubes"></i>
-                                <span>{% trans "Packages" %}</span>
+                                <span>{% trans "GS Plans" %}</span>
                             </a>
                             <div id="packageSub" class="sidebar-submenu">
 
                                 <ul>
                                     {% if admin or createPackage %}
                                         <li><a href="{% url 'createPackage' %}"
-                                               title="{% trans 'Create Package' %}"><span>{% trans "Create Package" %}</span></a>
+                                               title="{% trans 'Create Package' %}"><span>{% trans "Create a GS Plan" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or listPackages %}
                                         <li><a href="{% url 'listPackages' %}"
-                                               title="{% trans 'List Packages' %}"><span>{% trans "List Packages" %}</span></a>
+                                               title="{% trans 'List Packages' %}"><span>{% trans "List GS Plans" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or deletePackage %}
                                         <li><a href="{% url 'deletePackage' %}"
-                                               title="{% trans 'Delete Package' %}"><span>{% trans "Delete Package" %}</span></a>
+                                               title="{% trans 'Delete Package' %}"><span>{% trans "Delete GS Plans" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or modifyPackage %}
                                         <li><a href="{% url 'modifyPackage' %}"
-                                               title="{% trans 'Modify Package' %}"><span>{% trans "Modify Package" %}</span></a>
+                                               title="{% trans 'Modify Package' %}"><span>{% trans "Modify GS Plans" %}</span></a>
                                         </li>
                                     {% endif %}
                                 </ul>
@@ -484,15 +484,15 @@
                         </li>
                         <li>
                             <a title="{% trans 'Databases' %}">
-                                <i class="glyph-icon icon-database" title="{% trans 'Databases' %}"></i>
-                                <span>{% trans "Databases" %}</span>
+                                <i class="glyph-icon icon-database" title="{% trans ' GS Databases' %}"></i>
+                                <span>{% trans "GS Databases" %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
                                 <ul>
                                     {% if admin or createDatabase %}
                                         <li><a href="{% url 'createDatabase' %}"
-                                               title="{% trans 'Create Database' %}"><span>{% trans "Create Database" %}</span></a>
+                                               title="{% trans 'NEW Database' %}"><span>{% trans "NEW Database" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or deleteDatabase %}
@@ -516,9 +516,9 @@
                         </li>
 
                         <li class="dnsAsWhole">
-                            <a title="{% trans 'DNS' %}">
+                            <a title="{% trans 'Premium DNS' %}">
                                 <i class="glyph-icon icon-sitemap"></i>
-                                <span>{% trans "DNS" %}</span>
+                                <span>{% trans "Premium DNS" %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
@@ -559,9 +559,11 @@
                         </li>
 
                         <li class="emailAsWhole">
-                            <a href="{% url 'loadEmailHome' %}" title="{% trans 'Email' %}">
+                            <a href="{% url 'loadEmailHome' %}" title="{% trans 'GS Email' %}">
                                 <i class="glyph-icon icon-paper-plane"></i>
-                                <span>{% trans "Email" %}</span>
+                                <span>{% trans "GS Email" %}</span>
+                                <span class="bs-label badge-yellow">{% trans "BETA" %}</span>
+
                             </a>
                             <div class="sidebar-submenu">
 
@@ -635,9 +637,9 @@
                         </li>
 
                         <li>
-                            <a href="{% url 'loadBackupHome' %}" title="{% trans 'Back up' %}">
+                            <a href="{% url 'loadBackupHome' %}" title="{% trans 'GS Back up' %}">
                                 <i class="glyph-icon tooltip-button icon-copy" title=".icon-folder"></i>
-                                <span>{% trans "Back up" %}</span>
+                                <span>{% trans "GS Back up" %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
@@ -714,8 +716,8 @@
 
                         <li>
                             <a href="{% url 'loadSSLHome' %}" title="{% trans 'Back up' %}">
-                                <i class="glyph-icon tooltip-button icon-lock" title="{% trans 'SSL' %}"></i>
-                                <span>{% trans "SSL" %}</span>
+                                <i class="glyph-icon tooltip-button icon-lock" title="{% trans 'SSL Cert.' %}"></i>
+                                <span>{% trans "SSL Cert." %}</span>
                             </a>
                             <div class="sidebar-submenu">
 
@@ -727,7 +729,7 @@
                                     {% endif %}
                                     {% if admin or hostnameSSL %}
                                         <li class="hostnameSSL"><a href="{% url 'sslForHostName' %}"
-                                                                   title="{% trans 'Hostname SSL' %}"><span>{% trans "Hostname SSL" %}</span></a>
+                                                                   title="{% trans 'Server SSL' %}"><span>{% trans "Server SSL" %}</span></a>
                                         </li>
                                     {% endif %}
                                     {% if admin or mailServerSSL %}
@@ -742,12 +744,12 @@
 
                         {% if admin %}
 
-                            <li class="header"><span>{% trans "Server" %}</span></li>
+                            <li class="header"><span>{% trans "GS Server" %}</span></li>
 
                             <li>
-                                <a href="#" title="{% trans 'Terminal' %}">
+                                <a href="#" title="{% trans 'GS Terminal' %}">
                                     <i class="glyph-icon icon-linecons-fire"></i>
-                                    <span>{% trans "Web Terminal" %}</span>
+                                    <span>{% trans "Cyberpanel Terminal" %}</span>
                                     <span class="bs-label badge-yellow">{% trans "NEW" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
@@ -828,18 +830,18 @@
                             </li>
 
                             <li>
-                                <a href="#" title="{% trans 'Tuning' %}">
+                                <a href="#" title="{% trans 'GS Dev Tools' %}">
                                     <i class="glyph-icon icon-adjust"></i>
-                                    <span>{% trans "Tuning" %}</span>
+                                    <span>{% trans "GS Dev Tools" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
                                     <ul>
                                         <li><a href="{% url 'liteSpeedTuning' %}"
-                                               title="{% trans 'LiteSpeed Tuning' %}"><span>{% trans "LiteSpeed Tuning" %}</span></a>
+                                               title="{% trans 'LiteSpeed Conf' %}"><span>{% trans "LiteSpeed Conf" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'phpTuning' %}"
-                                               title="{% trans 'PHP Tuning' %}"><span>{% trans "PHP Tuning" %}</span></a>
+                                               title="{% trans 'PHP Conf' %}"><span>{% trans "PHP Conf" %}</span></a>
                                         </li>
                                     </ul>
 
@@ -849,7 +851,7 @@
                             <li>
                                 <a href="#" title="{% trans 'Server Status' %}">
                                     <i class="glyph-icon icon-cog"></i>
-                                    <span>{% trans "Server Status" %}</span>
+                                    <span>{% trans "GS Server Status" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
@@ -870,7 +872,7 @@
                                                title="{% trans 'Change CyberPanel Port' %}"><span>{% trans "Change Port" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'packageManager' %}"
-                                               title="{% trans 'Package Manager' %}"><span>{% trans "Package Manager" %}</span></a>
+                                               title="{% trans 'Package Manager' %}"><span>{% trans "GS Plan Manager" %}</span></a>
                                         </li>
                                     </ul>
 
@@ -899,28 +901,28 @@
                             <li>
                                 <a href="{% url 'logsHome' %}" title="{% trans 'Server Status' %}">
                                     <i class="glyph-icon icon-file"></i>
-                                    <span>{% trans "Logs" %}</span>
+                                    <span>{% trans "GS Logs" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
                                     <ul>
                                         <li><a href="{% url 'serverMail' %}"
-                                               title="{% trans 'Server Mail' %}"><span>{% trans "Server Mail" %}</span></a>
+                                               title="{% trans 'Server Mail' %}"><span>{% trans "GS Mail Server" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'accessLogs' %}"
-                                               title="{% trans 'Access Log' %}"><span>{% trans "Access Log" %}</span></a>
+                                               title="{% trans 'Access Log' %}"><span>{% trans "GS Access Log" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'errorLogs' %}"
-                                               title="{% trans 'Error Logs' %}"><span>{% trans "Error Logs" %}</span></a>
+                                               title="{% trans 'Error Logs' %}"><span>{% trans "GS Error Logs" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'emaillogs' %}"
-                                               title="{% trans 'Email Logs' %}"><span>{% trans "Email Log" %}</span></a>
+                                               title="{% trans 'Email Logs' %}"><span>{% trans "GS Email Log" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'ftplogs' %}"
                                                title="{% trans 'FTP Logs' %}"><span>{% trans "FTP Logs" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'modSecAuditLogs' %}"
-                                               title="{% trans 'ModSecurity Audit Logs' %}"><span>{% trans "ModSec Audit Logs" %}</span></a>
+                                               title="{% trans 'ModSecurity Audit Logs' %}"><span>{% trans "GS ModSec Audit Logs" %}</span></a>
                                         </li>
                                     </ul>
 
@@ -930,25 +932,25 @@
                             <li>
                                 <a href="{% url 'securityHome' %}" title="{% trans 'Security' %}">
                                     <i class="glyph-icon icon-shield"></i>
-                                    <span>{% trans "Security" %}</span>
+                                    <span>{% trans "GS Security" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
                                     <ul>
                                         <li><a href="{% url 'firewallHome' %}"
-                                               title="{% trans 'Firewall Home' %}"><span>{% trans "Firewall" %}</span></a>
+                                               title="{% trans 'Firewall Home' %}"><span>{% trans "GS Firewall" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'secureSSH' %}"
-                                               title="{% trans 'Secure SSH' %}"><span>{% trans "Secure SSH" %}</span></a>
+                                               title="{% trans 'Secure SSH' %}"><span>{% trans "GS Secure SSH" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'modSecurity' %}"
-                                               title="{% trans 'ModSecurity Configurations' %}"><span>{% trans "ModSecurity Conf" %}</span></a>
+                                               title="{% trans 'ModSecurity Configurations' %}"><span>{% trans "GS ModSecurity Conf" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'modSecRules' %}"
-                                               title="{% trans 'ModSecurity Rules' %}"><span>{% trans "ModSecurity Rules" %}</span></a>
+                                               title="{% trans 'ModSecurity Rules' %}"><span>{% trans "GS ModSecurity Rules" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'modSecRulesPacks' %}"
-                                               title="{% trans 'ModSecurity Rules Packs' %}"><span>{% trans "ModSecurity Rules Packs" %}</span></a>
+                                               title="{% trans 'ModSecurity Rules Packs' %}"><span>{% trans "GS ModSecurity Rules Packs" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'csf' %}"
                                                title="{% trans 'ConfigServer Security & Firewall (CSF)' %}"><span>{% trans "CSF" %}</span></a>
@@ -968,9 +970,9 @@
                             </li>
 
                             <li class="emailAsWhole">
-                                <a href="#" title="{% trans 'Mail Settings' %}">
+                                <a href="#" title="{% trans 'GS Mail Settings' %}">
                                     <i class="glyph-icon icon-envelope"></i>
-                                    <span>{% trans "Mail Settings" %}</span>
+                                    <span>{% trans "GS Mail Settings" %}</span>
                                     <span class="bs-label badge-yellow">{% trans "NEW" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
@@ -1002,13 +1004,13 @@
                             <li>
                                 <a href="#" title="{% trans 'Manage Services' %}">
                                     <i class="glyph-icon icon-folder-open"></i>
-                                    <span>{% trans "Manage Services" %}</span>
+                                    <span>{% trans "GS Services" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
                                     <ul>
                                         <li><a href="{% url 'manageApplications' %}"
-                                               title="{% trans 'Manage Applications' %}"><span>{% trans "Applications" %}</span></a>
+                                               title="{% trans 'Manage Applications' %}"><span>{% trans "GS Applications" %}</span></a>
                                         </li>
                                         <li><a href="{% url 'managePowerDNS' %}"
                                                title="{% trans 'Manage PowerDNS' %}"><span>{% trans "Manage PowerDNS" %}</span></a>
@@ -1027,7 +1029,7 @@
                             <li>
                                 <a href="#" title="{% trans 'Plugins' %}">
                                     <i class="glyph-icon icon-plug"></i>
-                                    <span>{% trans "Plugins" %}</span>
+                                    <span>{% trans "GS Plugins" %}</span>
                                 </a>
                                 <div class="sidebar-submenu">
 
