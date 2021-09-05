@@ -10,16 +10,16 @@
 
     <div class="container">
         <div id="page-title">
-            <h2>{% trans "Add/Modify DNS Zone" %} - <a target="_blank" href="http://go.cyberpanel.net/dns-records"
+            <h2>{% trans "DNS Zone Manager" %} - <a target="_blank" href="http://go.cyberpanel.net/dns-records"
                                                        style="height: 23px;line-height: 21px;"
                                                        class="btn btn-border btn-alt border-red btn-link font-red"
-                                                       title=""><span>{% trans "DNS Docs" %}</span></a></h2>
-            <p>{% trans "On this page you can add/modify dns records for domains whose dns zone is already created." %}</p>
+                                                       title=""><span>{% trans "DNS Help Docs" %}</span></a></h2>
+            <p>{% trans "Make sure you know what you are doing here." %}</p>
         </div>
         <div ng-controller="addModifyDNSRecords" class="panel">
             <div class="panel-body">
                 <h3 class="content-box-header">
-                    {% trans "Add Records" %} <img ng-hide="recordsLoading" src="{% static 'images/loading.gif' %}">
+                    {% trans "Add DNS Records" %} <img ng-hide="recordsLoading" src="{% static 'images/loading.gif' %}">
                 </h3>
                 <div class="example-box-wrapper">
 
@@ -27,10 +27,10 @@
                     {% if not status %}
 
                         <div class="col-md-12 text-center" style="margin-bottom: 2%;">
-                            <h3>{% trans "PowerDNS is disabled." %}
+                            <h3>{% trans "PowerDNS is disabled bro." %}
                                 <a href="{% url 'managePowerDNS' %}">
                                     <button class="btn btn-alt btn-hover btn-blue-alt">
-                                        <span>{% trans "Enable Now" %}</span>
+                                        <span>{% trans "Enable Now Hommie" %}</span>
                                         <i class="glyph-icon icon-arrow-right"></i>
                                     </button>
                                 </a></h3>
@@ -44,7 +44,7 @@
 
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">{% trans "Select Domain" %} </label>
+                                <label class="col-sm-3 control-label">{% trans "Choose your Domain" %} </label>
                                 <div class="col-sm-6">
                                     <select ng-change="fetchRecords()" ng-model="selectedZone" class="form-control">
                                         {% for items in domainsList %}
@@ -59,9 +59,9 @@
 
                                 <div class="example-box-wrapper">
                                     <ul class="nav nav-tabs">
-                                        <li ng-click="fetchRecordsTabs('aRecord')" id="aRecord"><a href="">A</a></li>
+                                        <li ng-click="fetchRecordsTabs('aRecord')" id="aRecord"><a href="">A | IPv4</a></li>
                                         <li ng-click="fetchRecordsTabs('aaaaRecord')" id="aaaaRecord"><a
-                                                href="">AAAA</a></li>
+                                                href="">AAAA | IPv6</a></li>
                                         <li ng-click="fetchRecordsTabs('cNameRecord')" id="cNameRecord"><a
                                                 href="">CNAME</a></li>
                                         <li ng-click="fetchRecordsTabs('mxRecord')" id="mxRecord"><a href="">MX</a></li>
@@ -83,7 +83,7 @@
 
 
                                 <div class="col-sm-3 aRecord">
-                                    <input placeholder="{% trans 'Name' %}" name="dom" type="text" class="form-control"
+                                    <input placeholder="{% trans 'IPv4' %}" name="dom" type="text" class="form-control"
                                            ng-model="recordName" required>
                                 </div>
 
@@ -109,7 +109,7 @@
 
 
                                 <div class="col-sm-3 aaaaRecord">
-                                    <input placeholder="{% trans 'Name' %}" name="dom" type="text" class="form-control"
+                                    <input placeholder="{% trans 'IPv6' %}" name="dom" type="text" class="form-control"
                                            ng-model="recordName" required>
                                 </div>
 
@@ -411,33 +411,33 @@
                                 <label class="col-sm-3 control-label"></label>
                                 <div class="col-sm-4">
                                     <div ng-hide="canNotFetchRecords" class="alert alert-danger">
-                                        <p>{% trans "Cannot fetch records. Error message:" %}{$ errorMessage $}</p>
+                                        <p>{% trans "Oh Shit! Cannot fetch records. Error message:" %}{$ errorMessage $}</p>
                                     </div>
 
                                     <div ng-hide="couldNotAddRecord" class="alert alert-danger">
-                                        <p>{% trans "Cannot add record. Error message: " %}{$ errorMessage $}</p>
+                                        <p>{% trans "Idk what happened, LOL . Error message: " %}{$ errorMessage $}</p>
                                     </div>
 
                                     <div ng-hide="recordsFetched" class="alert alert-success">
-                                        <p>{% trans "Records successfully fetched for" %} <strong>{$ domainFeteched
+                                        <p>{% trans "You did it ! You are awesome!" %} <strong>{$ domainFeteched
                                             $}</strong></p>
                                     </div>
 
                                     <div ng-hide="recordDeleted" class="alert alert-success">
-                                        <p>{% trans "Record Successfully Deleted" %}</p>
+                                        <p>{% trans "Record Successfully Killed" %}</p>
                                     </div>
 
                                     <div ng-hide="couldNotDeleteRecords" class="alert alert-danger">
-                                        <p>{% trans "Cannot delete record. Error message:" %} {$ errorMessage $}</p>
+                                        <p>{% trans "Cannot delete record, he too strong. Error message:" %} {$ errorMessage $}</p>
                                     </div>
 
                                     <div ng-hide="recordAdded" class="alert alert-success">
-                                        <p>{% trans "Record Successfully Added." %}</p>
+                                        <p>{% trans "Added the dumb shit you wrote." %}</p>
                                     </div>
 
 
                                     <div ng-hide="couldNotConnect" class="alert alert-success">
-                                        <p>{% trans "Could not connect to server. Please refresh this page." %}</p>
+                                        <p>{% trans "Could not connect to server, she has a BF. Please refresh this page." %}</p>
                                     </div>
 
                                 </div>
