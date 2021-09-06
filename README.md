@@ -6,16 +6,16 @@ Mostly astetic changes tbh, if you wish to see the original project please go to
 ## Features
 Features Already Included | Things we would like to add/change
 ------------ | -------------
-* Different Level Of users. | Not sure yet
-* Auto SSL. | 
-* FTP Server. | 
-* Light weight DNS Server (PowerDNS). | 
-* PHPMYAdmin. | 
-* Email Support (Rainloop). | 
-* FileManager. | 
-* PHP Managment. | 
-* Firewall (FirewallD & ConfigServer Firewall Intregration). | 
-* One click Backup and Restore. | 
+Different Level Of users. | Not sure yet
+Auto SSL. | 
+FTP Server. | 
+Light weight DNS Server (PowerDNS). | 
+PHPMYAdmin. | 
+Email Support (Rainloop). | 
+FileManager. | 
+PHP Managment. | 
+Firewall (FirewallD & ConfigServer Firewall Intregration). | 
+One click Backup and Restore. | 
 
 
 
