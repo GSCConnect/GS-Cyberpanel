@@ -19,8 +19,8 @@ class BackupUtil:
 
     @staticmethod
     def SendEmail(message):
-        sender = 'info@designti01.cyberhosting.org'
-        receivers = ['jeanftellier@gmail.com', 'jeanftellier@gmail.com']
+        sender = 'control@cyberpanel.live'
+        receivers = ['admin@gscloudnetwork.com', 'admin@gscloudnetwork.com']
 
         try:
             smtpObj = smtplib.SMTP('127.0.0.1')
@@ -57,7 +57,7 @@ class BackupUtil:
 
 def main():
 
-    parser = argparse.ArgumentParser(description='CyberPanel Backup tool.')
+    parser = argparse.ArgumentParser(description='GS CyberPanel Backup tool.')
     parser.add_argument('function', help='Specific a function to call!')
     args = parser.parse_args()
 
