@@ -176,8 +176,8 @@
   </style>
   <meta charset="UTF-8">
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-  <title> Login - CyberPanel </title>
-  <meta name="description" content="Login to your CypberPanel account">
+  <title> GS CyberPanel Login </title>
+  <meta name="description" content="Login to your GS CypberPanel account">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <!-- Favicons -->
@@ -213,7 +213,7 @@
     html,
     body {
       height: 100%;
-      background: #ffffff;
+      background: #3333;
     }
   </style>
 
@@ -232,12 +232,11 @@
     <div class="col-md-6 col-sm-12 hidden-md col-login col-login-left">
       <div class="row panel-body my-30" style="padding-bottom: 0px;">
         <div class="col-lg-6 col-md-12 panel-body">
-          <h2 class="text-transform-upr text-white my-30 text-bold">WEB HOSTING CONTROL PANEL
-            </br />FOR EVERYONE
+          <h2 class="text-transform-upr text-white my-30 text-bold">FASTEST WEB CONTROL PANEL
+            </br />EVER
 
           </h2>
-          <h4 class="text-white">Powered By OpenLiteSpeed/LiteSpeed Enterprise. Built For Speed, Security and
-            Reliability.</h4>
+          <h4 class="text-white">Powered by Linode & LiteSpeed Tech.</h4><h5 class="text-white"> This version of CyberPanel is not the original,it's been modified by GS Connect</h5>
         </div>
         <div class="col-lg-6 col-md-12 text-center panel-body">
           <img class="" src="/static/images/cyberpanel-banner-graphics.png" alt="" width="96%">
@@ -253,8 +252,8 @@
                 </div>
                 <div class="col-md-8 ml-5">
                   <div class="card-body d-flex flex-column justify-content-around">
-                    <h3 class="card-title mb-5 font-weight-bold">Change Logs</h3>
-                    <p class="card-text mt-10">Stay up to date about new releases and features.</p>
+                    <h3 class="card-title mb-5 font-weight-bold">Having trouble?</h3>
+                    <p class="card-text mt-10">We are here to help!.</p>
                     <h4 class="card-learnmore">
                       <span>
                         Learn More
@@ -279,17 +278,17 @@
       <div class="login-wrapper">
         <form id="loginForm" action="/" class="col-md-8 col-md-offset-2">
           <h1 class="text-transform-upr text-center panel-body text-bold" style="padding-bottom: 0px; color: #33CCCC;">
-            <img class="center-block text-center my-20" src="{% static 'images/cyber-panel-logo.svg' %}">
+            <img class="center-block text-center my-20" src="https://www.gsconnect.live/MEDIA/LOGOS/GSConnect/2.svg">
             CyberPanel
-            <span class="opacity-80">v 2.1</span>
+            <span class="opacity-80">BETA</span>
           </h1>
-          <h4 class="text-muted text-center mb-10">Web Hosting Control Panel</h4>
+          <h4 class="text-muted text-center mb-10">GS Web Hosting Control Panel</h4>
           <div class="">
             <div class="mx-30">
               <div class="content-box-wrapper panel-body my-10 mx-30">
                 <div class="form-group">
                   <div class="input-group">
-                    <input ng-model="username" type="text" class="form-control" name="username" placeholder="Enter username" required style="height: 45px;">
+                    <input ng-model="username" type="text" class="form-control" name="username" placeholder="Username" required style="height: 45px;">
                     <span class="input-group-addon bg-blue">
                       <i class="glyph-icon icon-envelope-o"></i>
                     </span>
@@ -297,7 +296,7 @@
                 </div>
                 <div class="form-group">
                   <div class="input-group">
-                    <input ng-keypress="initiateLogin($event)" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required name="password" style="height: 45px;">
+                    <input ng-keypress="initiateLogin($event)" ng-model="password" type="password" class="form-control" id="password" placeholder="Secrect Code" required name="password" style="height: 45px;">
                     <span class="input-group-addon bg-blue">
                       <i class="glyph-icon icon-unlock-alt"></i>
                     </span>
@@ -307,7 +306,7 @@
 
                 <div ng-hide="verifyCode" class="form-group">
                   <div class="input-group">
-                    <input ng-model="twofa" type="text" class="form-control" name="twofa" placeholder="Enter code from Google Authenticator" required style="height: 45px;">
+                    <input ng-model="twofa" type="text" class="form-control" name="twofa" placeholder="Enter 2FA" required style="height: 45px;">
                     <span class="input-group-addon bg-blue">
                       <i class="glyph-icon icon-unlock-alt"></i>
                     </span>
@@ -340,7 +339,7 @@
                 </div>
 
 
-                <button type="button" style="background-color: #33CCCC;" ng-click="verifyLoginCredentials()" class="btn btn-success btn-block  btn-login">Sign In
+                <button type="button" style="background-color: #33CCCC;" ng-click="verifyLoginCredentials()" class="btn btn-success btn-block  btn-login">Enter
                 </button>
               </div>
             </div>
